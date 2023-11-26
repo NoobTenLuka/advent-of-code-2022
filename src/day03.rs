@@ -1,6 +1,6 @@
 use itertools::Itertools;
 
-pub fn part1(input: String) -> i32 {
+pub fn part1(input: String) -> String {
     input
         .lines()
         .map(|line| {
@@ -21,10 +21,10 @@ pub fn part1(input: String) -> i32 {
             }
             prio as i32
         })
-        .sum()
+        .sum::<i32>().to_string()
 }
 
-pub fn part2(input: String) -> i32 {
+pub fn part2(input: String) -> String {
     input
         .lines()
         .tuples::<(_, _, _)>()
@@ -53,5 +53,5 @@ pub fn part2(input: String) -> i32 {
             }
             prio as i32
         })
-        .sum()
+        .sum::<i32>().to_string()
 }

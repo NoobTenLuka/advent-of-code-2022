@@ -1,4 +1,4 @@
-pub fn part1(input: String) -> i32 {
+pub fn part1(input: String) -> String {
     let mut max_calories = -1;
     input
         .split("\n\n")
@@ -8,10 +8,10 @@ pub fn part1(input: String) -> i32 {
                 max_calories = x;
             }
         });
-    max_calories
+    max_calories.to_string()
 }
 
-pub fn part2(input: String) -> i32 {
+pub fn part2(input: String) -> String {
     let mut max_calories = [-1i32; 3];
     input
         .split("\n\n")
@@ -30,5 +30,5 @@ pub fn part2(input: String) -> i32 {
                 max_calories[2] = x;
             }
         });
-    max_calories.iter().sum()
+    max_calories.iter().sum::<i32>().to_string()
 }

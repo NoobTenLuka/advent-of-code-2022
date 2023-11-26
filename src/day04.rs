@@ -1,6 +1,6 @@
 use itertools::Itertools;
 
-pub fn part1(input: String) -> i32 {
+pub fn part1(input: String) -> String {
     input
         .lines()
         .filter(|line| {
@@ -13,10 +13,10 @@ pub fn part1(input: String) -> i32 {
             (left_min <= right_min && left_max >= right_max)
                 || (left_min >= right_min && left_max <= right_max)
         })
-        .count() as i32
+        .count().to_string()
 }
 
-pub fn part2(input: String) -> i32 {
+pub fn part2(input: String) -> String {
     input
         .lines()
         .filter(|line| {
@@ -28,5 +28,5 @@ pub fn part2(input: String) -> i32 {
                 .unwrap();
             right_min <= left_max && left_min <= right_max 
         })
-        .count() as i32
+        .count().to_string()
 }
