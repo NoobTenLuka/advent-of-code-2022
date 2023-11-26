@@ -1,5 +1,6 @@
 mod day01;
 mod day02;
+mod day03;
 
 use std::{env, fs};
 
@@ -16,9 +17,15 @@ fn main() {
         _ => panic!("Not a valid part!"),
     };
 
-    let input = fs::read_to_string(format!("inputs/{:02}-input.txt", day)).expect("Day is invalid");
+    let test_input = match env::args().nth(3) {
+        Some(val) => val,
+        None => "".to_owned(),
+    };
 
-    match day {
+    let input = fs::read_to_string(format!("inputs/{:02}{}-input.txt", day, test_input))
+        .expect("Day is invalid");
+
+    let output = match day {
         1 => {
             if part1 {
                 day01::part1(input)
@@ -26,6 +33,27 @@ fn main() {
                 day01::part2(input)
             }
         }
+        2 => {
+            if part1 {
+                day02::part1(input)
+            } else {
+                day02::part2(input)
+            }
+        }
+        3 => {
+            if part1 {
+                day03::part1(input)
+            } else {
+                day03::part2(input)
+            }
+        }
         _ => panic!("Either invalid or not implemented"),
-    }
+    };
+
+    println!(
+        "Day {:02} part {} resulted in: {}",
+        day,
+        if part1 { 1 } else { 2 },
+        output
+    )
 }
